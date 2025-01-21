@@ -1,0 +1,17 @@
+name: Deploy to Pod - Day1
+
+on:
+  push:
+    branches:
+      - day1
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Apply Pod configuration
+      run: kubectl apply -f k8s-zone/pods/nginx-pod.yaml

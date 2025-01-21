@@ -27,6 +27,4 @@ tmp/
 node_modules/
 vendor/
 
-# Ignore GitLab CI/CD and GitHub Actions files
-.gitlab-ci.yml
-.github/workflows/
+
