@@ -18,6 +18,6 @@ jobs:
 
     - name: List contents of the repository
       run: ls -R
-      
+
     - name: Apply Pod configuration
-      run: kubectl apply -f /pods/nginx-pod.yaml
+      run: kubectl apply -f pods/nginx-pod.yaml
