@@ -1,0 +1,32 @@
+# Ignore Docker files
+Dockerfile*
+docker-compose*.yml
+docker-compose*.yaml
+
+# Ignore Kubernetes files
+deploy/k8s/*
+config/k8s/*
+
+# Ignore common IDE and editor files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Ignore common operating system files
+.DS_Store
+Thumbs.db
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+tmp/
+
+# Ignore node_modules and other package manager directories
+node_modules/
+vendor/
+
+# Ignore GitLab CI/CD and GitHub Actions files
+.gitlab-ci.yml
+.github/workflows/
