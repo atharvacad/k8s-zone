@@ -18,9 +18,6 @@ jobs:
 
     - name: List contents of the repository
       run: ls -R
-
-    - name: List contents of k8s-zone/pods directory
-      run: ls -R k8s-zone/pods
-
+      
     - name: Apply Pod configuration
-      run: kubectl apply -f k8s-zone/pods/nginx-pod.yaml
+      run: kubectl apply -f /pods/nginx-pod.yaml
