@@ -27,6 +27,15 @@ Then, apply the upgrade using `kubeadm`.
 ```sh
 kubeadm upgrade apply v1.31.XX
 ```
+## Upgrading Other Control Plane Nodes
+
+For the other control plane nodes, follow the same steps as the first control plane node but use the following command instead of `kubeadm upgrade apply`:
+
+```sh
+sudo kubeadm upgrade node
+```
+
+The `kubeadm upgrade apply` command is used for upgrading the control plane, while `kubeadm upgrade node` is used for upgrading the other nodes.
 
 ## Step 3: Upgrade Kubelet on Each Node
 
@@ -59,3 +68,4 @@ kubectl uncordon <node-name>
 ```
 
 Follow these steps for each node in your cluster.
+
