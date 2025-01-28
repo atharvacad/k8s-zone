@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: day2-nginx-2-1
+  labels:
+    app: nginx
+spec:  
+  strategy:
+      type: RollingUpdate
+      rollingUpdate:
+        maxSurge: 1    # Number of extra pods to create during update
+        maxUnavailable: 1  # Number of pods that can be unavailable during update
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.19
+        ports:
+        - containerPort: 80
+      nodeName: controlplane # Assign the pod to a specific node Manually Scheduling
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx

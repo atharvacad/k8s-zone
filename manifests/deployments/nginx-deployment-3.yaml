@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: day2-nginx-3
+  labels:
+    app: nginx
+spec:  
+  strategy:
+      type: RollingUpdate
+      rollingUpdate:
+        maxSurge: 1    # Number of extra pods to create during update
+        maxUnavailable: 1  # Number of pods that can be unavailable during update
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.19
+        ports:
+        - containerPort: 80
+        env:
+        - name: USERNAME_AS_Regular_ENV
+          value: "nginx-user-Regular-as-env"
+        - name: USERNAME_AS_SINGLE_ENV
+          valueFrom:
+            configMapKeyRef:
+              name: day2-configmaps-3-1
+              key: username_as_single_env
+        envFrom:
+        - configMapRef:
+            name: day2-configmaps-3-0
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx

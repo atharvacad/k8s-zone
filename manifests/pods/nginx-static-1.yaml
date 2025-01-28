@@ -1,0 +1,21 @@
+# This YAML file defines a static pod configuration for an NGINX server.
+# Static pods are managed directly by the kubelet on a specific node, 
+# rather than through the Kubernetes API server. This is useful for 
+# critical system pods or for debugging purposes.
+# The pod definition includes a single container running the NGINX image.
+# The location for creating static pod manifests is /etc/kubernetes/manifests in node.
+# The kubelet will automatically detect and manage static pods defined in this directory.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: static-web
+  labels:
+    role: myrole
+spec:
+  containers:
+    - name: web
+      image: nginx
+      ports:
+        - name: web
+          containerPort: 80
+          protocol: TCP
