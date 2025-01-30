@@ -20,7 +20,11 @@ spec:
         image: nginx:1.19
         ports:
         - containerPort: 80
-      tolerations:
+      # This YAML file defines a Kubernetes deployment for Nginx.
+      # It includes tolerations and node affinity settings to control
+      # the scheduling of the pods on specific nodes.
+      # The tolerations allow the pods to be scheduled on nodes with the "size=Large" taint.
+      # The node affinity ensures that the pods are scheduled on nodes labeled with "size=Large". tolerations:
       - key: "size"
         operator: "Equal"
         value: "Large"

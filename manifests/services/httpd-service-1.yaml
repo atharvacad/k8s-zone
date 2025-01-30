@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: day3-httpd-service-1
+  labels:
+    app: httpd
+spec:
+  selector:
+    app: httpd
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30080 # You can specify a port in the range 30000-32767
+  type: NodePort
