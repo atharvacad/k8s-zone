@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: day4-http-1-deployment
+  labels:
+    app: http
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: http
+  template:
+    metadata:
+      labels:
+        app: http
+    spec:
+      securityContext: # Security context for the container at pod level
+        runAsUser: 1000
+        runAsGroup: 3000
+      containers:
+      - name: http-container
+        image: httpd:2.4
+        ports:
+        - containerPort: 80

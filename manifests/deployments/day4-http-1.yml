@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: day4-http-1-deployment
+  labels:
+    app: http
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: http
+  template:
+    metadata:
+      labels:
+        app: http
+    spec:
+      containers:
+      - name: http-container
+        image: myusername/my-private-image:latest  # Replace with your private image
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: my-docker-secret  # Reference the secret
+
+#kubectl create secret docker-registry my-docker-secret \
+#  --docker-server=https://index.docker.io/v1/ \
+#  --docker-username=myusername \
+#  --docker-password=mypassword \
+#  --docker-email=myemail@example.com
